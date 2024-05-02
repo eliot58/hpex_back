@@ -1,13 +1,25 @@
 from django.contrib import admin
 from django.forms import Textarea
+from django.http import HttpRequest
 from .models import *
 
 @admin.register(Text)
 class TextAdmin(admin.ModelAdmin):
+
+    def has_delete_permission(self, request, *args, **kwargs) -> bool:
+        return False
+    
     formfield_overrides = {
-        models.TextField: {'widget': Textarea(attrs={'rows':60, 'cols': 140})},
+        models.TextField: {'widget': Textarea(attrs={'rows':30, 'cols': 140})},
     }
     list_display = ['id', 'text']
+
+@admin.register(Button)
+class ButtonAdmin(admin.ModelAdmin):
+
+    def has_delete_permission(self, request, *args, **kwargs) -> bool:
+        return False
+    list_display = ["id", 'text']
 
 
 @admin.register(Agent)

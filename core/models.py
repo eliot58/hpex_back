@@ -6,11 +6,22 @@ class Text(models.Model):
 
 
     def __str__(self) -> str:
-        return str(self.id)
+        return "Текст " + str(self.id)
 
     class Meta:
         verbose_name = 'Текст'
         verbose_name_plural = 'Тексты'
+
+class Button(models.Model):
+    text = models.CharField(max_length=100, verbose_name='Текст кнопки')
+
+
+    def __str__(self) -> str:
+        return self.text
+
+    class Meta:
+        verbose_name = 'Кнопка'
+        verbose_name_plural = 'Кнопки'
 
 class Agent(models.Model):
     tg_id = models.IntegerField(primary_key=True, verbose_name = "telegram id агента")

@@ -1,6 +1,6 @@
 from rest_framework import generics
-from .models import Agent, Client, Text, Track, Ransom
-from .serializers import AgentSerializer, ClientSerializer, TextSerializer, TrackSerializer, RansomSerializer
+from .models import Agent, Client, Text, Track, Ransom, Button
+from .serializers import AgentSerializer, ClientSerializer, TextSerializer, TrackSerializer, RansomSerializer, ButtonSerializer
 
 class AgentViewSet(generics.ListCreateAPIView):
     serializer_class = AgentSerializer
@@ -34,6 +34,11 @@ class ClientViewSet(generics.ListCreateAPIView):
 class TextViewSet(generics.ListAPIView):
     serializer_class = TextSerializer
     queryset = Text.objects.all().order_by("id")
+
+
+class ButtonViewSet(generics.ListAPIView):
+    serializer_class = ButtonSerializer
+    queryset = Button.objects.all().order_by("id")
 
 
 class TrackViewSet(generics.CreateAPIView):

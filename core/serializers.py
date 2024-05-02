@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Text, Agent, Client, Track, Ransom
+from .models import Text, Agent, Client, Track, Ransom, Button
 
 class AgentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,6 +17,12 @@ class ClientSerializer(serializers.ModelSerializer):
 class TextSerializer(serializers.ModelSerializer):
     class Meta:
         model = Text
+        fields = '__all__'
+
+
+class ButtonSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Button
         fields = '__all__'
 
 
