@@ -33,8 +33,16 @@ class ClientAdmin(admin.ModelAdmin):
 
 @admin.register(Track)
 class TrackAdmin(admin.ModelAdmin):
-    list_display = ['id']
+    list_display = ['file_name', 'created']
+
+    @admin.display(description='Название файла')
+    def file_name(self, obj):
+        return obj.file.name.split("/")[1]
 
 @admin.register(Ransom)
 class RansomAdmin(admin.ModelAdmin):
-    list_display = ['id'] 
+    list_display = ['file_name', 'created']
+
+    @admin.display(description='Название файла')
+    def file_name(self, obj):
+        return obj.file.name.split("/")[1]

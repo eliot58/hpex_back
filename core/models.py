@@ -63,9 +63,10 @@ class Client(models.Model):
 
 class Track(models.Model):
     file = models.FileField(upload_to="track")
+    created = models.DateField(auto_now_add = True)
 
     def __str__(self) -> str:
-        return str(self.id)
+        return str(self.file.name)
 
     class Meta:
         verbose_name = 'Контроль таблица'
@@ -74,9 +75,10 @@ class Track(models.Model):
 
 class Ransom(models.Model):
     file = models.FileField(upload_to="ransom")
+    created = models.DateField(auto_now_add = True)
 
     def __str__(self) -> str:
-        return str(self.id)
+        return str(self.file.name)
 
     class Meta:
         verbose_name = 'Выкуп таблица'
